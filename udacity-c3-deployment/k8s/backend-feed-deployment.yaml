@@ -12,7 +12,7 @@ spec:
         service: backend-feed
     spec:
       containers:
-      - image: scheele/udacity-restapi-feed
+      - image: vladimirkazan/nanodegree-udacity-restapi-feed:latest
         name: backend-feed
         imagePullPolicy: Always  
         resources:
