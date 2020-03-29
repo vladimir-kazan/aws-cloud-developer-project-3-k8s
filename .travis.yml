@@ -1,10 +1,13 @@
 language: minimal
 
+git:
+  depth: false
+
 services: docker
 
 stages:
-  - build
-  - deploy
+  - name: build-and-deploy
+    if: branch = master
 
 env:
   - DOCKER_COMPOSE_VERSION=1.23.2
@@ -25,9 +28,8 @@ install:
 
 jobs:
   include:
-    - stage: build
-      script: docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel
-    - stage: deploy
+    - stage: build-and-deploy
       script:
+        - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel
         - echo "$DOCKER_PWD" | docker login -u "$DOCKER_USR" --password-stdin
         - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml push
