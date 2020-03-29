@@ -5,9 +5,14 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 generatorOptions:
   disableNameSuffixHash: true
-configMapGenerator:
-- name: <todo>
+secretGenerator:
+- name: aws-secret
   files:
-  - ../../.env
+  - ./credentials
+- name: env-secret
+  env: ./.env.secret
+configMapGenerator:
+- name: env-config
+  env: ./.env
 
 

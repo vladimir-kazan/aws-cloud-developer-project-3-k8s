@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { environment } from '../environments/environment';
 
+console.log({ environment: environment });
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -19,6 +21,7 @@ export class AppComponent {
   ];
 
   public appName = environment.appName;
+
 
   constructor(
     private platform: Platform,

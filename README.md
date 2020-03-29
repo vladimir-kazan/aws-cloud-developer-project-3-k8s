@@ -3,10 +3,31 @@
 [![Build Status](https://travis-ci.com/vladimir-kazan/aws-cloud-developer-project-3-k8s.svg?branch=master)](https://travis-ci.com/vladimir-kazan/aws-cloud-developer-project-3-k8s)
 
 
-# 
+# Docker Hub Images
+
+- https://hub.docker.com/r/vladimirkazan/nanodegree-udacity-frontend
+- https://hub.docker.com/r/vladimirkazan/nanodegree-udacity-restapi-feed
+- https://hub.docker.com/r/vladimirkazan/nanodegree-udacity-restapi-user
+- https://hub.docker.com/r/vladimirkazan/nanodegree-udacity-reverseproxy
 
 
-## From Source
+# Run in k8s
+
+```sh
+alias k=kubectl
+
+# create secrets and configs
+k apply -f udacity-c3-deployment/k8s/config
+
+# provide files .aws-credentials
+# then upload it to cluster
+# it updates mocked values with real ones
+k apply -k udacity-c3-deployment/k8s/kustomization/
+```
+
+
+---
+## Additional Information
 
 Udagram is a simple cloud application developed alongside the Udacity Cloud Engineering Nanodegree. It allows users to register and log into a web client, post photos to the feed, and process photos using an image filtering microservice.
 
